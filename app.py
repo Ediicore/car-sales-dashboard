@@ -89,11 +89,11 @@ hist_button = st.button('Construir histograma de odómetro')
 scatter_button = st.button('Construir gráfico de dispersión odómetro vs precio')
 
 if hist_button:
-    fig = px.histogram(filtered_df, x="odometer")
+    fig = px.histogram(filtered_df, x="mileage")
     st.plotly_chart(fig, use_container_width=True)
 
 if scatter_button:
-    fig = px.scatter(filtered_df, x="odometer", y="price")
+    fig = px.scatter(filtered_df, x="mileage", y="price")
     st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
