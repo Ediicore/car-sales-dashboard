@@ -36,7 +36,7 @@ with col1:
 with col2:
     st.metric("Precio Promedio", f"${filtered_df['price'].mean():,.0f}")
 with col3:
-    st.metric("Año Promedio", f"{filtered_df['model_year'].mean():.0f}")
+    st.metric("Año Promedio", f"{filtered_df['year'].mean():.0f}")
 with col4:
     st.metric("Condición Principal", filtered_df['condition'].mode()[0] if not filtered_df.empty else "N/A")
 
@@ -51,9 +51,9 @@ st.plotly_chart(fig1, use_container_width=True)
 
 # 2. Gráfico de dispersión año vs precio
 st.subheader("Relación: Año vs Precio")
-fig2 = px.scatter(filtered_df, x='model_year', y='price', color='model',
+fig2 = px.scatter(filtered_df, x='year', y='price', color='model',
                  title='Año del Modelo vs Precio',
-                 labels={'model_year': 'Año del Modelo', 'price': 'Precio ($)'})
+                 labels={'year': 'Año del Modelo', 'price': 'Precio ($)'})
 st.plotly_chart(fig2, use_container_width=True)
 
 # 3. Comparación entre marcas (como en tus imágenes)
@@ -74,14 +74,14 @@ if len(selected_manufacturers) >= 2:
 
 # 4. Condición vs Año del modelo
 st.subheader("Condición vs Año del Modelo")
-fig4 = px.histogram(filtered_df, x='model_year', color='condition',
+fig4 = px.histogram(filtered_df, x='year', color='condition',
                    title='Distribución de Condición por Año',
-                   labels={'model_year': 'Año del Modelo'})
+                   labels={'year': 'Año del Modelo'})
 st.plotly_chart(fig4, use_container_width=True)
 
 # 5. Tabla de datos
 st.header("📋 Datos Filtrados")
-st.dataframe(filtered_df[['price', 'model_year', 'model', 'condition', 'cylinders', 'fuel']].head(20))
+st.dataframe(filtered_df[['price', 'year', 'model', 'condition', 'cylinders', 'fuel']].head(20))
 
 # Botones originales (para cumplir con el proyecto)
 st.header("🎯 Funcionalidades Requeridas")
