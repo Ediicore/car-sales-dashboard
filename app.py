@@ -38,7 +38,7 @@ with col2:
 with col3:
     st.metric("Año Promedio", f"{filtered_df['year'].mean():.0f}")
 with col4:
-    st.metric("Condición Principal", filtered_df['condition'].mode()[0] if not filtered_df.empty else "N/A")
+    st.metric("Condición Principal", filtered_df['transmission'].mode()[0] if not filtered_df.empty else "N/A")
 
 # Gráficas principales
 st.header("📈 Visualizaciones")
@@ -74,7 +74,7 @@ if len(selected_manufacturers) >= 2:
 
 # 4. Condición vs Año del modelo
 st.subheader("Condición vs Año del Modelo")
-fig4 = px.histogram(filtered_df, x='year', color='condition',
+fig4 = px.histogram(filtered_df, x='year', color='transmission',
                    title='Distribución de Condición por Año',
                    labels={'year': 'Año del Modelo'})
 st.plotly_chart(fig4, use_container_width=True)
